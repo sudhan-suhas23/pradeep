@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="birthdayCard" id="card">
+      <div class="cardFront">
+        <h3 class="happy">HAPPY BIRTHDAY</h3>
+        <div class="balloons">
+          <div class="balloon-1"></div>
+          <div class="balloon-2"></div>
+          <div class="balloon-3"></div>
+          <div class="balloon-4"></div>
+        </div>
+      </div>
+      <div class="cardInside">
+        
+        <h3 class="back">To Pradeep,</h3>
+        <p>Wishing you a very happy birthday.
+          
+        </p>
+        <p class="name">Sudhan Suhas</p>
+        <audio id="voiceMessage" src="rec1.mp3" preload="auto"></audio>
+
+        <!-- added link to go to next part -->
+        <a class="skip" href="index3.html">Proceed</a> 
+
+        <!-- adding dustbin icon -->
+        
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const card = document.querySelector('.birthdayCard');
+        const audio = document.getElementById('voiceMessage');
+
+        // Check if the card and audio element exist
+        if (!card || !audio) {
+            console.error('Card or audio element not found.');
+            return;
+        }
+
+        // Play audio when the card is hovered over
+        // card.addEventListener('mouseenter', () => {
+        //     audio.play().catch(error => {
+        //         console.error('Error playing audio:', error);
+        //     });
+        // });
+
+        // Pause and reset audio when the cursor leaves the card
+        // card.addEventListener('mouseleave', () => {
+        //     audio.pause();
+        //     audio.currentTime = 0; // Optional: Reset playback to start
+        // });
+
+        //for animation, after clicking next
+        // document.querySelector('.skip').addEventListener('click', (event) => {
+        //   event.preventDefault(); // Prevent default link action
+
+  
+        //   card.classList.add('flip');
+
+        //   setTimeout(() => {
+        //     card.classList.add('fade-out'); // Fade out after the flip
+        //   }, 600);
+
+        //   setTimeout(() => {
+        //     card.classList.add('damar');
+        //   }, 300); // 0.3 seconds delay for fade-out
+
+        //   setTimeout(() => {
+        //    window.location.href = event.target.getAttribute('href');
+        //   }, 2300);
+
+        
+    });
+</script>
+</body>
+</html>

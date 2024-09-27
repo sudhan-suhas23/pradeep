@@ -1,0 +1,573 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(35, 154, 194, 0.9);  /*changed*/
+    margin: 0;
+    position: relative;
+  }
+  
+  .birthdayCard {
+    position: relative;
+    width: 500px;
+    height: 700px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: perspective(2500px);
+    transition: 1s;
+  }
+  
+  .birthdayCard:hover {
+    transform: perspective(2500px) rotate(5deg);
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+      0 10px 100px rgba(0, 0, 0, 0.5);
+  }
+  
+  .birthdayCard:hover .cardFront {
+    transform: rotateY(-160deg);
+  }
+  
+  .birthdayCard:hover .happy {
+    visibility: hidden;
+  }
+  
+  .birthdayCard:hover .cardInside {
+    opacity: 1;
+  }
+
+  .cardFront {
+    position: relative;
+    background-color: #fff;
+    width: 500px;
+    height: 700px;
+    overflow: hidden;
+    transform-origin: left;
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+      30px 0 50px rgba(0, 0, 0, 0.4);
+    transition: 0.6s;
+  }
+  
+  .happy {
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    margin: 60px;
+    background-image: linear-gradient(120deg, #ffd856 0%, #f98c6e 100%);
+    transition: 0.1s;
+  }
+  
+  .balloons {
+    position: absolute;
+  }
+  
+  .balloon-1,
+  .balloon-2,
+  .balloon-3,
+  .balloon-4 {
+    position: absolute;
+    width: 150px;
+    height: 160px;
+    border-radius: 50%;
+  }
+  
+  .balloon-1 {
+    background-color: rgba(255, 40, 90, 0.7);
+    left: -10px;
+    top: 100px;
+  }
+  
+  .balloon-2 {
+    background-color: rgba(9, 215, 160, 0.7);
+    left: 120px;
+    top: 60px;
+  }
+  
+  .balloon-3 {
+    background-color: rgba(255, 186, 26, 0.7);
+    left: 250px;
+    top: 100px;
+  }
+  
+  .balloon-4 {
+    background-color: rgba(12, 122, 159, 0.7);
+    left: 400px;
+    top: 100px;
+  }
+  
+  .balloon-1::before,
+  .balloon-2::before,
+  .balloon-3::before,
+  .balloon-4::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 250px;
+    background-color: #ffc848;
+    top: 160px;
+    left: 75px;
+  }
+  
+  .balloon-1::after,
+  .balloon-2::after,
+  .balloon-3::after,
+  .balloon-4::after {
+    content: "";
+    position: absolute;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: 160px;
+    left: 70px;
+  }
+  
+  .balloon-1::after {
+    border-bottom: 15px solid #ff3e6b;
+  }
+  
+  .balloon-2::after {
+    border-bottom: 15px solid #04b183;
+  }
+  
+  .balloon-3::after {
+    border-bottom: 15px solid #ffc94c;
+  }
+  
+  .balloon-4::after {
+    border-bottom: 15px solid #13a9bd;
+  }
+  
+  .cardInside {
+    position: absolute;
+    background-color: #fff;
+    background-image: url('picture.jpg');
+    background-size: cover;
+    width: 500px;
+    height: 700px;
+    z-index: -1;    /*changed*/
+    left: 0;
+    top: 0;
+    opacity: 3.5; /* Initially hidden */
+    transition: opacity 0.6s; /* Smooth transition for opacity */
+    border: 1px solid rgb(248, 248, 248);
+    /* box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2); */
+  }
+  
+  p {
+    font-family: "Brush Script MT", cursive;
+    margin: 60px;
+    font-size: 36px;
+    color: #fafafa;
+  }
+  
+  .name {
+    position:absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 26px;
+    color: #333;
+  }
+  
+
+  .skip{
+    position: absolute;
+    left: 360px;
+    top: 650px;
+    color: rgb(113, 107, 229);
+    font-style: italic;
+    font-size:medium;
+
+  }
+
+  .back {
+    font-family: Tahoma, sans-serif;
+    color: #f0eaea;
+    text-align: center;
+    margin: 50px;
+    font-size: 24px;
+    outline-color: #333;
+    outline-style: dotted;
+  }
+
+  @keyframes slideshow {
+    0% {
+        background-image: url('ONE.jpg');
+    }
+    16% {
+        background-image: url('modified_2.jpg');
+    }
+    33% {
+        background-image: url('five.jpg');
+    }
+    50% {
+        background-image: url('four.jpg');
+    }
+    66% {
+        background-image: url('modified_3.jpg');
+    }
+    83% {
+        background-image: url('six.jpg');
+    }
+    100% {
+        background-image: url('ONE.jpg');
+    }
+}
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Sends the background images behind the card */
+    opacity: 0.7; /* Adjust this to your preference for image opacity */
+    animation: slideshow 12s infinite;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+  audio {
+    display: none;
+}
+
+
+
+/* Wrapping and moving animation */
+@keyframes wrapAndMove {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.2) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0) translate(300px, 400px);
+    opacity: 0;
+  }
+}
+
+.damar {
+  animation: wrapAndMove 2s forwards; /* Animates in 2 seconds */
+}
+
+.fade-out {
+  opacity: 0; /* Fade out effect */
+}
+
+.flip {
+  transform: rotateY(360deg); /* Adjust this according to your flipping logic */
+  transition: transform 0.6s; /* Duration for the flip effect */
+}
+
+
+/*----FOR INDEX2-----*/
+
+
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #239ac2;
+  margin: 0;
+  position:relative;
+  overflow: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('3D\ image.jpeg') no-repeat center center/cover;
+    filter: blur(5px); /* Apply blur to background only */
+    z-index: -1; /* Place the background behind everything */
+  }
+
+.circleCard {
+  width: 600px;
+  height: 600px;
+  bottom: 50px;
+  border-radius: 50%;
+  background-color: rgba(225, 198, 198, 0.9);;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size:x-large;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  z-index: 1;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.option {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #f98c6e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: larger;
+  transition: background-color 0.3s;
+}
+
+.option:hover {
+  background-color: #ffd856;
+}
+
+.message {
+  display: none; /* Initially hidden */
+  position: absolute;
+  bottom: -80px; /* Position below the circle */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #a2c964ee;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.show {
+  display: block; /* Show the message */
+  animation: showEnvelope 0.5s forwards; /* Animation for showing the envelope */
+}
+
+@keyframes showEnvelope {
+  0% {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes wrapAndDisappear {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(0);
+      opacity: 0;
+  }
+}
+
+
+
+/* -------FOR PERSONAL MESSAGE--------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: #3B4049;
+}
+
+.wrapper {
+  height: 300px;
+  width: 450px;
+  background-color: #3760C9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
+.lid {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-right: 225px solid transparent;
+  border-bottom: 150px solid transparent;
+  border-left: 225px solid transparent;
+  transform-origin: top;
+  transition: transform 0.25s linear;
+}
+
+/* Lid when closed */
+.lid.one {
+  border-top: 150px solid #658ced;
+  transform: rotateX(0deg);
+  z-index: 3;
+  transition-delay: 0.75s;
+}
+
+/* Lid when opened */
+.lid.two {
+  border-top: 100px solid #3760C9;
+  transform: rotateX(90deg);
+  z-index: 1;
+  transition-delay: 0.5s;
+}
+
+.envelope-2-personal{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-top: 150px solid transparent;
+  border-right: 225px solid #C4DFF0;
+  border-bottom: 150px solid #C4DFF0;
+  border-left: 225px solid #a4d4f2;
+  z-index: 3;
+}
+
+.letter {
+  position: absolute;
+  top: 0;
+  width: 85%;
+  height: 85%;
+  background-color: white;
+  border-radius: 15px;
+  z-index: 2;
+  transition: 0.5s;
+}
+
+.letter p {
+  text-align: center;
+  font-size: 35px;
+  margin-top: 40px;
+  color: #3B4049;
+  margin-bottom: 20px;
+}
+
+.wrapper:hover .lid.one {
+    transform: rotateX(90deg);
+    transition-delay: 0s;
+}
+
+.wrapper:hover .lid.two {
+    transform: rotateX(180deg);
+    transition-delay: 0.25s;
+}
+
+.wrapper:hover .letter {
+  transform: translateY(-60px);
+  transition-delay: 0.5s;
+}
+.simple-button {
+  position: fixed; /* Keep it fixed at the bottom */
+  bottom: 20px; /* 20px from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+  background-color: #3760C9; /* Button color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.simple-button:hover {
+  background-color: #658ced; /* Change color on hover */
+}
+
+.notification_1 {
+  position: fixed; /* Fixed positioning */
+  top: 20px; /* 20px from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  padding: 10px 20px; /* Padding */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow */
+  font-size: 16px; /* Font size */
+  z-index: 10; /* Make sure it is above other elements */
+  display: block; /* Hide by default */
+}
+
+
+
+/* -------FOR NOTIFICATION--------- */
+.notification {
+  position: fixed;
+  top: 30%;
+  right: -300px; /* Hidden initially
+  width: 250px; /* Reduced width for a more compact look */
+  height: 120px; /* Set a specific height */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+  text-align: center;
+  border-radius: 10px; /* Rounded corners */
+  transition: right 0.5s ease;
+  background: url('notify.jpg') no-repeat center center/cover;
+  color: #333; /* Text color */
+  font-size: 16px; /* Adjusted font size for better fit */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+}
+
+.notification p {
+  font-size: 32px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.notification button {
+  margin-top: 5px; /* Space between the message and buttons */
+  padding: 5px 10px; /* Adjusted button padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded button corners */
+  background-color: #3760C9; /* Button color */
+  color: white; /* Text color for buttons */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth background change */
+  font-size: 14px; /* Smaller font size for buttons */
+}
+
+.notification button:hover {
+  background-color: #274e90; /* Darker shade on hover */
+}
+
+/* Slide in notification */
+.show-notification {
+  right: 20px; /* Slide into view */
+}
+
+/* Page transition effect */
+.page-transition {
+  animation: slideDown 0.8s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+} */
